@@ -1,4 +1,4 @@
-class Solution(object):
+'''class Solution(object):
     def longestCommonPrefix(self, strs):
         if not strs:
             return ""
@@ -11,4 +11,18 @@ class Solution(object):
                     print("Mismatch found at word '{}', index {}".format(other, i))
                     return strs[0][:i]
 
-        return strs[0]
+        return strs[0]'''
+
+class Solution:
+    def longestCommonPrefix(self, strs):
+
+        if not strs:
+            return ""
+        prefix = strs[0]
+        for word in strs[1:]:
+            while not word.startswith(prefix):
+                prefix = prefix[:-1]
+
+                if prefix == "":
+                    return""
+        return prefix
