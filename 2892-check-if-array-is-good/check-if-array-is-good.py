@@ -1,3 +1,5 @@
+'''#approach 1
+
 from typing import List
 from collections import Counter
 
@@ -17,4 +19,13 @@ class Solution:
             if freq[i] != 1:
                 return False
         
-        return freq[n] == 2
+        return freq[n] == 2'''
+
+#approach 2
+
+from typing import List
+
+class Solution:
+    def isGood(self, nums: List[int]) -> bool:
+        n = len(nums) - 1
+        return sorted(nums) == list(range(1, n)) + [n, n]
