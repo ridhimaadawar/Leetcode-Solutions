@@ -1,16 +1,20 @@
-class Solution(object):
-    def isValid(self, s):
+class Solution:
+    def isValid(self, s: str) -> bool:
         stack = []
-        bracket_map = {')': '(', '}': '{', ']': '['}
+        mapping = {
+            ')': '(',
+            '}': '{',
+            ']': '['
+        }
 
         for char in s:
-            if char in bracket_map.values():
-                stack.append(char)
-            elif char in bracket_map:
-                if not stack or stack[-1] != bracket_map[char]:
+            if char in mapping:              # it's a closing bracket
+                if not stack:                # nothing to match with
                     return False
-                stack.pop()
+                top = stack.pop()
+                if top != mapping[char]:     # mismatched bracket
+                    return False
             else:
-                return False 
+                stack.append(char)           # it's an opening bracket, push it
 
-        return len(stack) == 0
+        return len(stack) == 0              # valid only if nothing is left over
